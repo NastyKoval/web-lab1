@@ -1,0 +1,23 @@
+/* шапка */
+header {
+  font-family: fantasy;
+  color: #ffffff;
+  background: #d6336c;                
+  text-align: center;
+  padding: 2% 0;
+  border-bottom: 5px solid #16b5b5;  /* бирюзовая линия */
+}
+
+/* дочерний селектор: заголовок внутри шапки */
+header > h1.page-title {
+  font-size: 34px;
+  margin: 0 0 6px;
+  letter-spacing: 2px;
+}
+
+/* потомок: строки с данными студента (цвет переопределён — каскад) */
+header .student-info {
+  font-size: 17px;
+  color: #ffe3ef;
+  margin: 4px 0;
+}

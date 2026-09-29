@@ -1,0 +1,134 @@
+/* оформление страницы. палитра: розовый + бирюза */
+
+/* элемент body: шрифт и цвет наследуются вложенными элементами */
+body {
+  font-family: "Trebuchet MS", sans-serif;
+  color: #3a2b31;
+  background: #fdf1f6;
+  margin: 0;
+  padding: 0 2% 3%;
+}
+
+h2 {
+  color: #c0206a;
+  border-left: 4px solid #16b5b5;    /* бирюзовая полоска слева */
+  padding-left: 10px;
+  font-size: 19px;
+}
+
+/* макет на таблице */
+.layout { width: 100%; border-spacing: 14px; }
+
+/* потомок: ячейки внутри .layout */
+.layout td {
+  vertical-align: top;
+  padding: 18px;
+  background: #ffffff;
+  border: 1px solid #f0cfdd;
+  border-radius: 8px;
+}
+.cell-canvas { width: 45%; text-align: center; }
+.cell-form { width: 55%; }
+
+#plane { border: 1px solid #e6b9cd; background: #fffafc; }
+
+.field-label { font-weight: bold; color: #b02a58; margin: 12px 0 4px; }
+
+/* потомок: отступы полей ввода — в процентах */
+.form-area input { margin: 1% 2%; padding: 1% 2%; font-size: 15px; }
+
+/* селектор атрибута: только текстовое поле Y */
+.form-area input[type="text"] {
+  width: 55%;
+  border: 2px solid #e6b9cd;
+  border-radius: 6px;
+}
+input[type="text"]:focus { border-color: #16b5b5; outline: none; }
+
+/* дочерний селектор: кнопки прямо внутри .btn-group */
+.btn-group > button {
+  margin: 0.6%;
+  padding: 8px 14px;
+  color: #7a2447;
+  background: #fbe6ef;
+  border: 1px solid #e6b9cd;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.btn-group > button:hover { background: #f6d0e0; }
+
+/* атрибут: выбранная кнопка — бирюзовая */
+.btn-group > button[data-active="true"] {
+  background: #16b5b5;
+  color: #ffffff;
+  border-color: #128f8f;
+}
+
+.controls { margin-top: 16px; }
+.btn-primary, .btn-secondary {
+  padding: 10px 22px;
+  margin-right: 2%;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.btn-primary { background: #d6336c; }     /* розовая */
+.btn-secondary { background: #16b5b5; }    /* бирюзовая */
+
+.error { color: #b3121f; font-weight: bold; min-height: 18px; }
+
+/* таблица результатов */
+.results { width: 100%; border-collapse: collapse; background: #ffffff; }
+.results caption {
+  text-align: left; font-weight: bold; color: #c0206a;
+  padding: 10px; font-size: 18px;
+}
+
+/* потомок: ячейки таблицы */
+.results th, .results td { border: 1px solid #f2d7e2; padding: 8px; text-align: center; }
+.results th { background: #d6336c; color: #ffffff; }
+
+/* дочерний: чётные строки внутри tbody */
+.results > tbody > tr:nth-child(even) { background: #fdeef4; }
+
+/* атрибут: цвет результата */
+td[data-hit="yes"] { color: #2e7d32; font-weight: bold; }
+td[data-hit="no"]  { color: #b3121f; font-weight: bold; }
+
+/* фото при попадании: слой поверх всей страницы, по умолчанию скрыт */
+.overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(58, 20, 40, 0.85);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  cursor: pointer;
+}
+
+/* атрибут: JS ставит data-show="true" — слой появляется */
+.overlay[data-show="true"] { display: flex; }
+
+/* дочерний: фото выплывает снизу с увеличением */
+.overlay > img {
+  max-width: 90%;
+  max-height: 80vh;
+  border: 6px solid #16b5b5;
+  border-radius: 12px;
+  animation: float-in 0.5s ease-out;
+}
+.overlay > p {
+  font-family: fantasy;
+  font-size: 40px;
+  color: #ffffff;
+  margin: 2% 0 0;
+  animation: float-in 0.5s ease-out;
+}
+
+@keyframes float-in {
+  from { opacity: 0; transform: translateY(60px) scale(0.7); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}

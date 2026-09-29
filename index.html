@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Лабораторная работа №1</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="header.css">
+</head>
+<body>
+
+<!-- шапка: ФИО, группа, вариант -->
+<header>
+  <h1 class="page-title">Определение попадания точки в область</h1>
+  <p class="student-info">Ковалева Анастасия Петровна</p>
+  <p class="student-info">Группа 3213 · Вариант 12702</p>
+</header>
+
+<!-- макет на таблице: слева плоскость, справа форма -->
+<table class="layout">
+  <tr>
+    <td class="cell-canvas">
+      <h2>Координатная плоскость</h2>
+      <canvas id="plane" width="400" height="400"></canvas>
+    </td>
+    <td class="cell-form">
+      <h2>Ввод данных</h2>
+      <form id="point-form" class="form-area">
+
+        <!-- X: кнопки -4..4 -->
+        <p class="field-label">Координата X:</p>
+        <div id="x-buttons" class="btn-group">
+          <button type="button" data-value="-4">-4</button>
+          <button type="button" data-value="-3">-3</button>
+          <button type="button" data-value="-2">-2</button>
+          <button type="button" data-value="-1">-1</button>
+          <button type="button" data-value="0">0</button>
+          <button type="button" data-value="1">1</button>
+          <button type="button" data-value="2">2</button>
+          <button type="button" data-value="3">3</button>
+          <button type="button" data-value="4">4</button>
+        </div>
+        <input type="hidden" id="x-value">
+
+        <!-- Y: текстовое поле -3..5 -->
+        <p class="field-label"><label for="y-value">Координата Y (от -3 до 5):</label></p>
+        <input type="text" id="y-value" placeholder="например, 2.5" autocomplete="off">
+
+        <!-- R: кнопки -->
+        <p class="field-label">Радиус R:</p>
+        <div id="r-buttons" class="btn-group">
+          <button type="button" data-value="1">1</button>
+          <button type="button" data-value="1.5">1.5</button>
+          <button type="button" data-value="2">2</button>
+          <button type="button" data-value="2.5">2.5</button>
+          <button type="button" data-value="3">3</button>
+        </div>
+        <input type="hidden" id="r-value">
+
+        <p id="error-box" class="error"></p>
+        <div class="controls">
+          <button type="submit" class="btn-primary">Проверить</button>
+          <button type="button" id="clear-btn" class="btn-secondary">Очистить</button>
+        </div>
+      </form>
+    </td>
+  </tr>
+</table>
+
+<!-- таблица результатов -->
+<table class="results">
+  <caption>Результаты проверок</caption>
+  <thead>
+    <tr><th>X</th><th>Y</th><th>R</th><th>Результат</th><th>Дата и время</th></tr>
+  </thead>
+  <tbody id="results-body"></tbody>
+</table>
+
+<!-- фото на весь экран при попадании -->
+<div id="hit-overlay" class="overlay">
+  <img src="hit.jpg" alt="">
+  <p>Попадание!</p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
